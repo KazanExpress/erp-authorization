@@ -8,9 +8,10 @@
 npm i @kazanexpress/erp-authorization@github:KazanExpress/erp-authorization
 ```
 
-2. Подключить и установить плагин
+2. Подключить стили и установить плагин
 
 ```
+import '@kazanexpress/erp-authorization/dist/ErpAuth.css';
 import { ErpAuth } from "@kazanexpress/erp-authorization";
 app.use(ErpAuth)
 ```
