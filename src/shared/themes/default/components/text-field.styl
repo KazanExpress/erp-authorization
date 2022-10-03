@@ -1,0 +1,47 @@
++RegisterComponent(TextField)
+  Typography(S Medium Short)
+  color Gray(DK28)
+  box-sizing border-box
+  height 39px
+  border-width 1px
+  border-style solid
+  border-color Gray(LT40)
+  border-radius 4px
+  padding 12px
+  transition border-color 200ms ease
+  font-size 0.75rem
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button
+    -webkit-appearance none
+    margin 0
+  &
+    -moz-appearance textfield
+
+  &:placeholder
+    color Gray(DK8)
+
+  &:hover
+    border-color Gray(DK8)
+
+  &:focus
+    outline none
+    border-color Violet()
+
+  &:disabled
+    border-color Gray(LT40)
+    background-color Gray(LT48)
+    color Gray(LT8)
+
++CreateMod(Invalid, TextField)
+  border-color Red(DK10)
+  &:hover
+    border-color Red(DK10)
+  &:active
+    border-color Red(DK10)
+
++CreateMod(Success, TextField)
+  border-color Green(DK10)
+  &:hover
+    border-color Green(DK10)
+  &:active
+    border-color Green(DK10)

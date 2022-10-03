@@ -1,0 +1,97 @@
++RegisterComponent(Button)
+  Typography(Short M Medium)
+  padding 9px 12px
+  border-radius 4px
+  border none
+  &:active
+    transform scale(0.98)
+
++CreateMod(Primary, Button)
+  color White()
+  background-color Violet()
+  &:hover
+    background-color Violet(DK5)
+  &:disabled
+    background-color Violet(LT15)
+
++CreateMod(PrimaryDark, Button)
+  color White()
+  background-color Black(A30)
+  &:hover
+    background-color Black(A50)
+  &:active
+    background-color Black(A60)
+  &:disabled
+    background-color Black(A10)
+
++CreateMod(Secondary, Button)
+  background-color White()
+  color Violet()
+  border: 1px dashed Violet();
+  &:hover
+    background-color White()
+  &:active
+    background-color Violet(LT34)
+  &:disabled
+    background-color Violet(LT20)
+    border-color Violet(LT15)
+
++CreateMod(Text, Button)
+  background-color transparent
+  color Gray(DK8)
+  &:hover
+    background-color Gray(LT48)
+    color Gray(DK28)
+  &:active
+    background-color Gray(LT40)
+  &:disabled
+    color Gray(LT16)
+
++CreateMod(TextBlue, Button)
+  background-color transparent
+  color Violet(LT6)
+  &:hover
+    background-color transparent
+    color Violet(DK5)
+  &:active
+    background-color transparent
+    color Violet(DK9)
+  &:disabled
+    background-color transparent
+    color Violet(LT15)
+
++CreateMod(TextLight, Button)
+  background-color transparent
+  color White()
+  &:hover
+    background-color transparent
+    color White()
+  &:active
+    background-color transparent
+    color White()
+  &:disabled
+    background-color transparent
+    color White()
+
+tag-button(backgroundColor)
+  cursor default
+  padding 7px 12px
+  background-color backgroundColor
+
+  &:hover
+    background-color backgroundColor
+
+  &:active
+    background-color backgroundColor
+    transform none
+
++CreateMod(LightBlue, Button)
+  background-color Violet(LT38)
+  color Violet(DK9)
+  &:hover
+    background-color Violet(LT30)
+  &:active
+    background-color Violet(LT34)
+  &:disabled
+    background-color Violet(LT40)
+    color Violet(LT24)

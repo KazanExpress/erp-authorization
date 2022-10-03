@@ -1,0 +1,17 @@
+{
+  "Violet": "hsla(263, 40%, 57%, 1)",
+  "Green": "hsla(166, 70%, 30%, 1)",
+  "LightGreen": "hsla(100, 77%, 44%, 1)",
+  "Pink": "hsla(345, 100%, 66%, 1)",
+  "Purple": "hsla(293, 91%, 77%, 1)",
+  "LightPurple": "hsla(293, 91%, 94%, 1)",
+  "Yellow": "hsla(35, 100%, 70%, 1)",
+  "Orange": "hsla(20, 95%, 57%, 1)",
+  "Red": "hsla(360, 78%, 56%, 1)",
+  "Blue": "hsla(263, 40%, 57%, 1)",
+  "LightBlue": "hsla(220, 25%, 50%, 1)",
+  "Gray": "hsla(220, 4%, 48%, 1)",
+  "LightGray": "hsla(220, 4%, 88%, 1)",
+  "Black": "hsla(0, 0%, 0%, 1)",
+  "White": "hsla(255, 255%, 255%, 1)"
+}
