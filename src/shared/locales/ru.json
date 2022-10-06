@@ -2,6 +2,7 @@
   "login": "Войти",
   "username": "Номер",
   "password": "Пароль",
+  "capslock on": "CapsLock включен",
   "error login invalid": "Неверный логин или пароль",
   "error login no internet": "Отсутствует интернет соединение",
   "error login cant connect to server": "Проблема с подключением к серверу",

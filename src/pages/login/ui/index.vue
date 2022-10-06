@@ -14,7 +14,7 @@
         v-model="v$.username.$model"
       />
       <tooltip
-        :text="t['CapsLock is on']"
+        :text="t['capslock on']"
         placement="right"
         :is-visible="isCapsLockOn"
         :offset="[11, 5]"
