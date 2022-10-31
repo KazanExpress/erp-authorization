@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <auth-login :locale="EAuthLocales.RU" gql @on-login="handleLogin" />
+    <auth-login :locale="EAuthLocales.RU" :is-prod="false" @on-login="handleLogin" />
   </div>
 </template>
 

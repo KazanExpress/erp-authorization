@@ -11,8 +11,11 @@ const WMS_AUTH_ENDPOINT = "account/oauth/token";
 import { EAuthLocales } from "shared/locales";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useAuthApi = (locale: EAuthLocales = EAuthLocales.RU) => {
-  const wmsBaseApi = useWmsBaseApi(locale);
+export const useAuthApi = (
+  locale: EAuthLocales = EAuthLocales.RU,
+  isProd = false
+) => {
+  const wmsBaseApi = useWmsBaseApi(locale, isProd);
 
   const login = async (authBody: IAuthBody): Promise<IAuthAccountDto> => {
     const formData = new FormData();

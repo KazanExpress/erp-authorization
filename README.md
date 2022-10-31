@@ -22,6 +22,7 @@ app.use(ErpAuth)
 | ------ | ---------------------- | -------- | --------------- |
 | locale | [EAuthLocales](#types) | false    | EAuthLocales.RU |
 | gql    | boolean                | false    | false           |
+| isProd | boolean                | false    | false           |
 
 ### Events
 

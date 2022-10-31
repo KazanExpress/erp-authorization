@@ -3,7 +3,10 @@ import { useAuthMethods } from "./business/use-auth-methods";
 import { EAuthLocales } from "shared/locales";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useAuth = (locale: EAuthLocales = EAuthLocales.RU) => {
+export const useAuth = (
+  locale: EAuthLocales = EAuthLocales.RU,
+  isProd = false
+) => {
   const {
     authState,
     getAuthState,
@@ -11,7 +14,7 @@ export const useAuth = (locale: EAuthLocales = EAuthLocales.RU) => {
     refreshToken,
     login,
     logout
-  } = useAuthMethods(locale);
+  } = useAuthMethods(locale, isProd);
   const isAuthenticated = computed(() => authState?.account !== null);
   const token = computed(() => authState.account?.accessToken);
   const rtoken = computed(() => authState.account?.refreshToken);

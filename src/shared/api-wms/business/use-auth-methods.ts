@@ -15,8 +15,11 @@ const initialAuthState: IAuthState = {
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useAuthMethods = (locale: EAuthLocales = EAuthLocales.RU) => {
-  const authApi = useAuthApi(locale);
+export const useAuthMethods = (
+  locale: EAuthLocales = EAuthLocales.RU,
+  isProd = false
+) => {
+  const authApi = useAuthApi(locale, isProd);
 
   const authState = reactive<IAuthState>(initialAuthState);
 

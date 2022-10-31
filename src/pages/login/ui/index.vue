@@ -92,6 +92,10 @@ export default defineComponent({
       type: String as PropType<EAuthLocales>,
       default: EAuthLocales.RU
     },
+    isProd: {
+      type: Boolean,
+      default: false
+    },
     gql: {
       type: Boolean,
       default: false
@@ -106,7 +110,7 @@ export default defineComponent({
       ? require("shared/api-apollo")
       : require("shared/api-wms");
 
-    const { login } = useAuth(props.locale);
+    const { login } = useAuth(props.locale, props.isProd);
 
     const { phoneMask, unmaskPhone } = usePhone(props.locale);
 
