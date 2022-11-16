@@ -2,7 +2,7 @@ import { App } from "vue";
 
 import Login from "./login/ui/index.vue";
 import { EAuthLocales } from "shared/locales";
-import { uncacheAccount } from "shared/account";
+import { uncacheAccount, cacheAccount, getCachedAccount } from "shared/account";
 import { IAuthAccountDto } from "shared/account/types";
 
 const ErpAuth = {
@@ -11,4 +11,11 @@ const ErpAuth = {
   }
 };
 
-export { ErpAuth, uncacheAccount, EAuthLocales, IAuthAccountDto };
+export {
+  ErpAuth,
+  uncacheAccount,
+  cacheAccount,
+  getCachedAccount,
+  EAuthLocales,
+  IAuthAccountDto
+};

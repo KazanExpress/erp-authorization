@@ -3,10 +3,10 @@ import { localStorageService } from "shared/services/local-storage";
 
 const AUTH_KEY = "auth";
 
-export const cacheAccount = (account: IAuthAccountDto) =>
+export const cacheAccount = (account: IAuthAccountDto): void =>
   localStorageService.set(AUTH_KEY, JSON.stringify(account));
 
-export const uncacheAccount = () => localStorageService.remove(AUTH_KEY);
+export const uncacheAccount = (): void => localStorageService.remove(AUTH_KEY);
 
 export const getCachedAccount = (): IAuthAccountDto | null => {
   const account = localStorageService.get(AUTH_KEY);
