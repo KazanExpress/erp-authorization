@@ -1,6 +1,6 @@
 {
   "login": "Войти",
-  "username": "Номер",
+  "username": "Телефон",
   "password": "Пароль",
   "capslock on": "CapsLock включен",
   "error login invalid": "Неверный логин или пароль",
