@@ -46,6 +46,7 @@
     </div>
     <base-button
       :loading="state.loading"
+      :disabled="v$.$invalid"
       class="login-button"
       data-test-id="button__login"
     >
