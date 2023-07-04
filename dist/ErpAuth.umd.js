@@ -12750,7 +12750,7 @@ var authLink = context_setContext(function (_, _ref) {
 });
 // CONCATENATED MODULE: ./src/shared/api-apollo/business/http-link.ts
 
-var GQL_URL = "https://gateway.erp.dev.cluster.kznexpess.com"; // httpLink – just need it to work
+var GQL_URL = "https://gateway-erp.dev.cluster.kznexpess.com"; // httpLink – just need it to work
 
 var httpLink = createHttpLink({
   uri: GQL_URL
