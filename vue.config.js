@@ -3,19 +3,11 @@
  */
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const AliasPlugin = require("enhanced-resolve/lib/AliasPlugin");
-const { DefinePlugin } = require("webpack");
-const paths = require("./tsconfig.json").compilerOptions.paths;
-
-const processedPaths = Object.keys(paths).map(key => ({
-  name: key.replace("/*", ""),
-  alias: paths[key].map(entry => entry.replace("/*", "").replace("./", ""))
-}));
 
 /** @type {Options} */
 const options = {
   chainWebpack: config => {
-    config.output.filename("js/app.js");
+    // config.output.filename("js/app.js");
 
     config.devServer.port(8088).end();
 
@@ -26,10 +18,6 @@ const options = {
           configFile: "tsconfig.json"
         }
       ]);
-
-    config.resolve
-      .plugin("enhanced-resolve")
-      .use(AliasPlugin, ["described-resolve", processedPaths, "resolve"]);
   }
 };
 

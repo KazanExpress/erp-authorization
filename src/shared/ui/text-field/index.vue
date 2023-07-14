@@ -95,7 +95,7 @@ export default defineComponent({
 });
 </script>
 <style lang="stylus" scoped>
-@require '~shared/themes/provider'
+@require '../../themes/provider'
 
 .wrapper
   position relative

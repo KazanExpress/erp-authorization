@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <auth-login :locale="EAuthLocales.RU" :is-prod="false" @on-login="handleLogin" />
+    <auth-login :locale="EAuthLocales.RU" :api-url="'https://gateway-erp.dev.cluster.kznexpess.com'" gql @on-login="handleLogin" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { EAuthLocales, uncacheAccount, IAuthAccountDto } from "pages"; // @kazanexpress/erp-authorization
+import { EAuthLocales, IAuthAccountDto } from "pages"; // @kazanexpress/erp-authorization
 
 const handleLogin = (payload: IAuthAccountDto) => {
   console.log(payload);

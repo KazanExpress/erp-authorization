@@ -1,11 +1,9 @@
 import { computed, toRefs } from "vue";
 import { useAuthMethods } from "./business/use-auth-methods";
-import { EAuthLocales } from "shared/locales";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useAuth = (
-  locale: EAuthLocales = EAuthLocales.RU,
-  isProd = false
+  apiUrl: string,
 ) => {
   const {
     authState,
@@ -14,7 +12,7 @@ export const useAuth = (
     refreshToken,
     login,
     logout
-  } = useAuthMethods(locale, isProd);
+  } = useAuthMethods(apiUrl);
   const isAuthenticated = computed(() => authState?.account !== null);
   const token = computed(() => authState.account?.accessToken);
   const rtoken = computed(() => authState.account?.refreshToken);

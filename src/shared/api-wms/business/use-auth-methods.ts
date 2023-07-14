@@ -1,7 +1,6 @@
 import { reactive, readonly } from "vue";
 import { useAuthApi } from "../api";
 import { IAuthAccountDto } from "../models";
-import { EAuthLocales } from "shared/locales";
 import { cacheAccount, uncacheAccount, getCachedAccount } from "shared/account";
 
 interface IAuthState {
@@ -16,10 +15,9 @@ const initialAuthState: IAuthState = {
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useAuthMethods = (
-  locale: EAuthLocales = EAuthLocales.RU,
-  isProd = false
+  apiUrl: string
 ) => {
-  const authApi = useAuthApi(locale, isProd);
+  const authApi = useAuthApi(apiUrl);
 
   const authState = reactive<IAuthState>(initialAuthState);
 

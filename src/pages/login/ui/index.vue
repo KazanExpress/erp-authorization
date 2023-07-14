@@ -9,9 +9,9 @@
       <text-field
         v-maska="phoneMask"
         :label="t['username']"
-        :invalid="v$.username.$dirty && !!v$.username.$silentErrors.length"
+        :invalid="isFormValidated && !isUsernameValid"
         data-test-id="input__phone"
-        v-model="v$.username.$model"
+        v-model="form.username"
       />
       <tooltip
         :text="t['capslock on']"
@@ -25,9 +25,9 @@
           <text-field
             :type="!state.showPassword && 'password'"
             :label="t['password']"
-            :invalid="v$.password.$dirty && !!v$.password.$silentErrors.length"
+            :invalid="isFormValidated && !isPasswordValid"
             data-test-id="input__password"
-            v-model="v$.password.$model"
+            v-model="form.password"
             @keyup="handlePasswordKeyUp"
           >
             <eye-show-line
@@ -46,7 +46,7 @@
     </div>
     <base-button
       :loading="state.loading"
-      :disabled="v$.$invalid"
+      :disabled="isDisabled"
       class="login-button"
       data-test-id="button__login"
     >
@@ -56,8 +56,6 @@
 </template>
 
 <script lang="ts">
-import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
 import { maska } from "maska";
 import { TimeoutError } from "ky";
 import { computed, defineComponent, reactive, ref, PropType } from "vue";
@@ -93,9 +91,8 @@ export default defineComponent({
       type: String as PropType<EAuthLocales>,
       default: EAuthLocales.RU
     },
-    isProd: {
-      type: Boolean,
-      default: false
+    apiUrl: {
+      type: String,
     },
     gql: {
       type: Boolean,
@@ -111,7 +108,7 @@ export default defineComponent({
       ? require("shared/api-apollo")
       : require("shared/api-wms");
 
-    const { login } = useAuth(props.locale, props.isProd);
+    const { login } = useAuth(props.apiUrl);
 
     const { phoneMask, unmaskPhone } = usePhone(props.locale);
 
@@ -119,20 +116,22 @@ export default defineComponent({
       username: "",
       password: ""
     });
+
     const state = reactive<TState>(initialState);
     const isCapsLockOn = ref<boolean>(false);
-    const rules = {
-      username: {
-        required
-      },
-      password: { required }
-    };
-    const v$ = useVuelidate(rules, form);
+
+    const isFormValidated = ref(false);
+    const isUsernameValid = computed(() => form.username.length);
+    const isPasswordValid = computed(() => form.password.length);
+    const isFormValid = computed(() => {
+      return isUsernameValid.value && isPasswordValid.value;
+    })
+
     const handleSubmit = () => {
-      v$.value.$validate();
+      isFormValidated.value = true;
       state.error = false;
       state.errorMessage = "";
-      if (!v$.value.$invalid) {
+      if (isFormValid.value) {
         const username = unmaskPhone(form.username);
         const password = form.password;
         state.loading = true;
@@ -156,7 +155,7 @@ export default defineComponent({
       }
     };
     const toggleShowPassword = () => (state.showPassword = !state.showPassword);
-    const isDisabled = computed(() => state.loading || v$.value.$invalid);
+    const isDisabled = computed(() => state.loading || !isFormValid.value);
     const handlePasswordKeyUp = (event: KeyboardEvent) => {
       isCapsLockOn.value = event.getModifierState?.("CapsLock");
     };
@@ -168,12 +167,15 @@ export default defineComponent({
       unmaskPhone,
       form,
       handleSubmit,
-      v$,
       state,
       toggleShowPassword,
       isDisabled,
       handlePasswordKeyUp,
-      isCapsLockOn
+      isCapsLockOn,
+      isFormValidated,
+      isFormValid,
+      isUsernameValid,
+      isPasswordValid,
     };
   }
 });

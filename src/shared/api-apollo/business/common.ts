@@ -21,11 +21,13 @@ const defaultOptions: DefaultOptions = {
   }
 };
 
-export const apolloClient: ApolloClient<NormalizedCacheObject> =
-  new ApolloClient({
-    link: ApolloLink.from([errorLink, authLink, httpLink]), // chain with links
+export const initApolloClient = (apiUrl: string): ApolloClient<NormalizedCacheObject> => {
+  return new ApolloClient({
+    link: ApolloLink.from([errorLink, authLink, httpLink(apiUrl)]),
     cache, // use cache in default
     defaultOptions,
     name: "erp-authorization",
     version: packageSettings.version
   });
+}
+  

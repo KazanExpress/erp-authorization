@@ -1,4 +1,3 @@
-import ky from "ky";
 import {
   ConvertAuthAccount,
   IServerAuthAccountDto,
@@ -8,14 +7,12 @@ import {
 import { useWmsBaseApi } from "./config";
 
 const WMS_AUTH_ENDPOINT = "account/oauth/token";
-import { EAuthLocales } from "shared/locales";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useAuthApi = (
-  locale: EAuthLocales = EAuthLocales.RU,
-  isProd = false
+  apiUrl: string,
 ) => {
-  const wmsBaseApi = useWmsBaseApi(locale, isProd);
+  const wmsBaseApi = useWmsBaseApi(apiUrl);
 
   const login = async (authBody: IAuthBody): Promise<IAuthAccountDto> => {
     const formData = new FormData();
