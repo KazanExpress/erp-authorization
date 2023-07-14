@@ -1,6 +1,4 @@
-import { createHttpLink } from "@apollo/client/core";
-
-const GQL_URL = "https://gateway-erp.dev.cluster.kznexpess.com";
+import { createHttpLink, ApolloLink } from "@apollo/client/core";
 
 // httpLink – just need it to work
-export const httpLink = createHttpLink({ uri: GQL_URL });
+export const httpLink = (apiUrl: string): ApolloLink => createHttpLink({ uri: apiUrl });

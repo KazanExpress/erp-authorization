@@ -1,1 +1,1 @@
-export { apolloClient } from './common';
+export { initApolloClient } from './common';

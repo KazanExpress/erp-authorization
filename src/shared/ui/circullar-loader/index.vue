@@ -2,7 +2,7 @@
   <div class="circullar-loader" />
 </template>
 <style lang="stylus" scoped>
-@require '~shared/themes/provider'
+@require '../../themes/provider'
 
 @keyframes rotate
   from

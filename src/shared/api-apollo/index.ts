@@ -1,12 +1,14 @@
 export * from "./models/types";
 export { gql, ApolloQueryResult, FetchResult } from "@apollo/client/core";
-export { apolloClient } from "./business";
-import { login as gqlLogin } from "./login";
-import { refreshToken as gqlRefreshToken } from "./refresh-token";
+import { initApolloClient } from "./business";
 import { cacheAccount } from "shared/account";
 import { IAuthAccountDto } from "shared/account/types";
+import { useAuthMethods } from "./use-auth-methods";
 
-export const useAuth = () => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const useAuth = (apiUrl: string) => {
+  const {login: gqlLogin, refreshToken: gqlRefreshToken} = useAuthMethods(initApolloClient(apiUrl));
+
   const formatAccountResponse = data => {
     return {
       accessToken: data.accessToken,
