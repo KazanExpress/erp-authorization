@@ -46,7 +46,7 @@
     </div>
     <base-button
       :loading="state.loading"
-      :class="['login-button', {'disabled': isDisabled}]"
+      :class="['login-button', {'login-disabled': isDisabled}]"
       data-test-id="button__login"
       @click="handleSubmit"
     >
@@ -220,7 +220,7 @@ export default defineComponent({
 .login-button
   height 42px
   justify-items center
-  &.disabled
+  &.login-disabled
     background-color Violet(LT15)
     &:hover
       background-color Violet(LT15)
