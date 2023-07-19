@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <auth-login :locale="EAuthLocales.RU" :api-url="'https://gateway-erp.dev.cluster.kznexpess.com'" gql @on-login="handleLogin" />
+    <auth-login :locale="EAuthLocales.RU" :api-url="'https://wms-api.dev.cluster.kznexpess.com/'" @on-login="handleLogin" />
   </div>
 </template>
 
