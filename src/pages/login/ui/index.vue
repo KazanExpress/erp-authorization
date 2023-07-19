@@ -1,5 +1,5 @@
 <template>
-  <form class="wrapper" @submit.prevent="handleSubmit">
+  <form class="wrapper" @submit.prevent="">
     <component :is="logo" class="logo" />
     <div class="form">
       <div v-if="state.error" class="error-wrapper" data-test-id="div__error">
@@ -46,9 +46,9 @@
     </div>
     <base-button
       :loading="state.loading"
-      :disabled="isDisabled"
-      class="login-button"
+      :class="['login-button', {'disabled': isDisabled}]"
       data-test-id="button__login"
+      @click="handleSubmit"
     >
       {{ t["login"] }}
     </base-button>
@@ -58,7 +58,7 @@
 <script lang="ts">
 import { maska } from "maska";
 import { TimeoutError } from "ky";
-import { computed, defineComponent, reactive, ref, PropType } from "vue";
+import { computed, defineComponent, reactive, ref, PropType, watch } from "vue";
 import { EyeHideLine, EyeShowLine, WarningCircleFill } from "shared/icons";
 import { BaseButton, Tooltip, TextField } from "shared/ui";
 import { usePhone } from "shared/utils/phone";
@@ -123,6 +123,11 @@ export default defineComponent({
     const isFormValidated = ref(false);
     const isUsernameValid = computed(() => form.username.length);
     const isPasswordValid = computed(() => form.password.length);
+
+    watch(form, () => {
+      isFormValidated.value = false;
+    })
+
     const isFormValid = computed(() => {
       return isUsernameValid.value && isPasswordValid.value;
     })
@@ -145,7 +150,7 @@ export default defineComponent({
               state.errorMessage = "error login no internet";
             else if (
               e instanceof TimeoutError ||
-              e.message.includes("NetworkError") ||
+              e instanceof TypeError ||
               e?.response?.status > 400
             )
               state.errorMessage = "error login cant connect to server";
@@ -215,6 +220,10 @@ export default defineComponent({
 .login-button
   height 42px
   justify-items center
+  &.disabled
+    background-color Violet(LT15)
+    &:hover
+      background-color Violet(LT15)
 
 @keyframes rotation
   to

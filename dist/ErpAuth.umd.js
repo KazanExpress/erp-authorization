@@ -14107,7 +14107,7 @@ const cache = new InMemoryCache({
   possibleTypes: possibleTypes_namespaceObject
 });
 ;// CONCATENATED MODULE: ./package.json
-var package_namespaceObject = {"i8":"1.0.0"};
+var package_namespaceObject = {"i8":"1.0.1"};
 ;// CONCATENATED MODULE: ./src/shared/api-apollo/business/common.ts
 
 
@@ -15131,9 +15131,9 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(203);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/pages/login/ui/index.vue?vue&type=template&id=f5a53188&scoped=true&ts=true
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/pages/login/ui/index.vue?vue&type=template&id=9eb1fcd8&scoped=true&ts=true
 
-const _withScopeId = n => (_pushScopeId("data-v-f5a53188"), n = n(), _popScopeId(), n);
+const _withScopeId = n => (_pushScopeId("data-v-9eb1fcd8"), n = n(), _popScopeId(), n);
 const _hoisted_1 = {
   class: "form"
 };
@@ -15155,9 +15155,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_maska = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDirective)("maska");
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("form", {
     class: "wrapper",
-    onSubmit: _cache[2] || (_cache[2] = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withModifiers)(
-    //@ts-ignore
-    (...args) => _ctx.handleSubmit && _ctx.handleSubmit(...args), ["prevent"]))
+    onSubmit: _cache[2] || (_cache[2] = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withModifiers)(() => {}, ["prevent"]))
   }, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)(_ctx.logo), {
     class: "logo"
   })), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_1, [_ctx.state.error ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("div", _hoisted_2, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(_component_warning_circle_fill, {
@@ -15199,15 +15197,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }, 8, ["text", "is-visible"])]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(_component_base_button, {
     loading: _ctx.state.loading,
-    disabled: _ctx.isDisabled,
-    class: "login-button",
-    "data-test-id": "button__login"
+    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(['login-button', {
+      'disabled': _ctx.isDisabled
+    }]),
+    "data-test-id": "button__login",
+    onClick: _ctx.handleSubmit
   }, {
     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(_ctx.t["login"]), 1)]),
     _: 1
-  }, 8, ["loading", "disabled"])], 32);
+  }, 8, ["loading", "class", "onClick"])], 32);
 }
-;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue?vue&type=template&id=f5a53188&scoped=true&ts=true
+;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue?vue&type=template&id=9eb1fcd8&scoped=true&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/maska/dist/maska.esm.js
 /*!
@@ -15769,6 +15769,9 @@ const initialState = {
     const isFormValidated = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)(false);
     const isUsernameValid = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => form.username.length);
     const isPasswordValid = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => form.password.length);
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(form, () => {
+      isFormValidated.value = false;
+    });
     const isFormValid = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
       return isUsernameValid.value && isPasswordValid.value;
     });
@@ -15784,7 +15787,7 @@ const initialState = {
           emit("on-login", account);
         }).catch(e => {
           state.error = true;
-          if (window.navigator.onLine === false) state.errorMessage = "error login no internet";else if (e instanceof TimeoutError/* TimeoutError */.W || e.message.includes("NetworkError") || e?.response?.status > 400) state.errorMessage = "error login cant connect to server";else state.errorMessage = "error login invalid";
+          if (window.navigator.onLine === false) state.errorMessage = "error login no internet";else if (e instanceof TimeoutError/* TimeoutError */.W || e instanceof TypeError || e?.response?.status > 400) state.errorMessage = "error login cant connect to server";else state.errorMessage = "error login invalid";
         }).finally(() => state.loading = false);
       }
     };
@@ -15814,10 +15817,10 @@ const initialState = {
 }));
 ;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue?vue&type=script&lang=ts
  
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-82.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-82.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-82.use[2]!./node_modules/stylus-loader/dist/cjs.js??clonedRuleSet-82.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/pages/login/ui/index.vue?vue&type=style&index=0&id=f5a53188&lang=stylus&scoped=true
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-82.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-82.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-82.use[2]!./node_modules/stylus-loader/dist/cjs.js??clonedRuleSet-82.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/pages/login/ui/index.vue?vue&type=style&index=0&id=9eb1fcd8&lang=stylus&scoped=true
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue?vue&type=style&index=0&id=f5a53188&lang=stylus&scoped=true
+;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue?vue&type=style&index=0&id=9eb1fcd8&lang=stylus&scoped=true
 
 ;// CONCATENATED MODULE: ./src/pages/login/ui/index.vue
 
@@ -15827,7 +15830,7 @@ const initialState = {
 ;
 
 
-const ui_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(uivue_type_script_lang_ts, [['render',render],['__scopeId',"data-v-f5a53188"]])
+const ui_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(uivue_type_script_lang_ts, [['render',render],['__scopeId',"data-v-9eb1fcd8"]])
 
 /* harmony default export */ var ui = (ui_exports_);
 // EXTERNAL MODULE: ./src/shared/account/index.ts
