@@ -61,5 +61,6 @@
     "*.json",
     "*.js",
     "*.svg"
-  ]
+  ],
+  "typings": "./dist/index.d.ts"
 }
