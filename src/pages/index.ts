@@ -17,5 +17,6 @@ export {
   cacheAccount,
   getCachedAccount,
   EAuthLocales,
-  IAuthAccountDto
+  IAuthAccountDto,
+  Login
 };
