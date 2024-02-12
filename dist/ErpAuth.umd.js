@@ -14108,7 +14108,7 @@ const cache = new InMemoryCache({
   possibleTypes: possibleTypes_namespaceObject
 });
 ;// CONCATENATED MODULE: ./package.json
-var package_namespaceObject = {"i8":"1.0.3"};
+var package_namespaceObject = {"i8":"1.0.4"};
 ;// CONCATENATED MODULE: ./src/shared/api-apollo/business/common.ts
 
 
