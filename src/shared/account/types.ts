@@ -34,6 +34,7 @@ export const ConvertAuthUserInfo = mapFactory<
 >({
   firstName: true,
   lastName: true,
+  patronymic: true,
   role: true,
   permissions: () => [],
   id: true,
