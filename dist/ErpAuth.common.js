@@ -14098,7 +14098,7 @@ const cache = new InMemoryCache({
   possibleTypes: possibleTypes_namespaceObject
 });
 ;// CONCATENATED MODULE: ./package.json
-var package_namespaceObject = {"i8":"1.0.4"};
+var package_namespaceObject = {"i8":"1.0.5"};
 ;// CONCATENATED MODULE: ./src/shared/api-apollo/business/common.ts
 
 
@@ -14205,6 +14205,7 @@ const useAuth = apiUrl => {
         id: data.account.accountId,
         firstName: data.account.firstName,
         lastName: data.account.lastName,
+        patronymic: data.account.patronymic,
         role: data.account.role.name,
         permissions: data.account.role.permissions
       }

@@ -17,6 +17,7 @@ export const useAuth = (apiUrl: string) => {
         id: data.account.accountId,
         firstName: data.account.firstName,
         lastName: data.account.lastName,
+        patronymic: data.account.patronymic,
         role: data.account.role.name,
         permissions: data.account.role.permissions
       }
